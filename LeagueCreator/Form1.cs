@@ -47,11 +47,21 @@ namespace LeagueCreator
                 MessageBox.Show("Please load the players first.");
                 return;
             }
-            
-            //ask the user how many teams should be created
-            int numTeams = Convert.ToInt32(Microsoft.VisualBasic.Interaction.InputBox("How many teams do you want to create?"));
 
-            //TODO: Save the teams to the desired xls file.    
+            try
+            {
+                //ask the user how many teams should be created
+                int numTeams = Convert.ToInt32(Microsoft.VisualBasic.Interaction.InputBox("How many teams do you want to create?"));
+
+                //generate the teams
+                var teams = PlayerSheet.CreateTeams(numTeams);
+
+                //TODO: output the teams to the specified file
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("Some kind of error creating the teams. Probably an invalid number. More details '{0}'", ex.Message));
+            }
         }
     }
 }
