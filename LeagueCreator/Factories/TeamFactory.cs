@@ -7,7 +7,7 @@ using LeagueCreator.Players;
 
 namespace LeagueCreator.Factories
 {
-    public class TeamFactory
+    public static class TeamFactory
     {
         /// <summary>
         /// Creates a concrete class for a team

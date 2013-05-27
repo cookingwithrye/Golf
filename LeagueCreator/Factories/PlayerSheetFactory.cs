@@ -8,7 +8,7 @@ namespace LeagueCreator
     /// <summary>
     /// Generates a concrete class for loading and manipulating a player sheet
     /// </summary>
-    public class PlayerSheetFactory
+    public static class PlayerSheetFactory
     {
         /// <summary>
         /// Retrieves a player sheet from a specified file

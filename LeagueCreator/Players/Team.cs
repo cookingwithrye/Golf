@@ -13,11 +13,12 @@ namespace LeagueCreator.Players
         /// <summary>
         /// Players that are part of this team
         /// </summary>
-        public IList<IPlayer> Players { get; private set; }
+        public IEnumerable<IPlayer> Players { get { return _players.AsEnumerable(); } }
+        private IList<IPlayer> _players;
 
         public Team()
         {
-            Players = new List<IPlayer>();
+            _players = new List<IPlayer>();
         }
         
         /// <summary>
@@ -26,7 +27,7 @@ namespace LeagueCreator.Players
         /// <param name="Player">The player to add to this team</param>
         public void AddPlayer(IPlayer Player)
         {
-            Players.Add(Player);
+            _players.Add(Player);
         }
     }
 }

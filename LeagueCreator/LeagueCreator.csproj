@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Factories\PlayerFactory.cs" />
+    <Compile Include="Factories\TeamFactory.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

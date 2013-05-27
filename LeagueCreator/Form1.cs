@@ -32,12 +32,12 @@ namespace LeagueCreator
             try
             {
                 //load and display the player sheet onscreen
-                PlayerSheet = FactoryFactory.GetPlayerSheetFactory.GetPlayerSheetFactoryGetPlayerSheet("Players.xls");
+                PlayerSheet = PlayerSheetFactory.GetPlayerSheet("Players.xls");
                 gridviewPlayers.DataSource = PlayerSheet.Players;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(String.Format("Error encountered, probably in the data format in the excel file. More details: '{0}'", ex.Message);
+                MessageBox.Show(String.Format("Error encountered, probably in the data format in the excel file. More details: '{0}'", ex.Message));
             }
         }
 

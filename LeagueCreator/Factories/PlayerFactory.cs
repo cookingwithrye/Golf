@@ -10,7 +10,7 @@ namespace LeagueCreator.Factories
     /// <summary>
     /// Generates players
     /// </summary>
-    public class PlayerFactory
+    public static class PlayerFactory
     {
         /// <summary>
         /// All valid strings which indicate that a player is a captain

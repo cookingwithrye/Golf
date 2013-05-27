@@ -13,12 +13,12 @@ namespace LeagueCreator
         /// <summary>
         /// Players that are part of this team
         /// </summary>
-        public IEnumerable<IPlayer> Players { get; }
+        IEnumerable<IPlayer> Players { get; }
 
         /// <summary>
         /// Adds a player to a specified team.
         /// </summary>
         /// <param name="Player">The player to add to this team</param>
-        public void AddPlayer(IPlayer Player);
+        void AddPlayer(IPlayer Player);
     }
 }

@@ -29,9 +29,7 @@ namespace LeagueCreator
                 throw new Exception("Not enough captains for the desired number of teams.");
             
             //create the number of empty teams needed
-            var teams = new ITeam[numTeams];
-            for (int i = 0; i < numTeams; i++)
-                teams[i] = LeagueCreator.Factories.TeamFactory.CreateTeam();
+            var teams = Factories.TeamFactory.CreateTeams(numTeams);
 
             //TODO: randomly distribute the captains amongst the number of desired teams. The player receives a collection of teams that he/she could be placed on and adds himself to the list.
             //TODO: randomly distribute the remaining players amongst the teams
