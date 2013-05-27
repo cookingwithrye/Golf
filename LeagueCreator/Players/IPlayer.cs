@@ -14,6 +14,7 @@ namespace LeagueCreator
         string LastName { get; }
         string Phone { get; }
         string Email { get; }
+        string MemberID { get; }
         
         /// <summary>
         /// Is this player a captain?

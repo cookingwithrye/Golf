@@ -26,9 +26,9 @@ namespace LeagueCreator.Factories
         /// <param name="Phone"></param>
         /// <param name="Email"></param>
         /// <returns>New concrete player object</returns>
-        public static IPlayer CreatePlayer(string Firstname, string Lastname, string IsCaptain, string Phone, string Email, string HasRestriction)
+        public static IPlayer CreatePlayer(string Firstname, string Lastname, string IsCaptain, string Phone, string Email, string HasRestriction, string MemberID)
         {
-            return new Player(Firstname.Trim(), Lastname.Trim(), Phone: Phone.Trim(), Email: Email.Trim(), HasRestriction: HasRestriction.Trim(),
+            return new Player(Firstname.Trim(), Lastname.Trim(), Phone: Phone.Trim(), Email: Email.Trim(), HasRestriction: HasRestriction.Trim(), MemberID: MemberID,
                 IsCaptain: captainStrings.Contains(IsCaptain.ToUpperInvariant()));
         }
     }

@@ -21,6 +21,7 @@ namespace LeagueCreator.Players
         public bool IsCaptain { get; private set; }
 
         public string HasRestriction { get; private set; }
+        public string MemberID { get; private set; }
 
         /// <summary>
         /// Creates a player with the given properties.
@@ -31,7 +32,7 @@ namespace LeagueCreator.Players
         /// <param name="Phone"></param>
         /// <param name="Email"></param>
         /// <returns>New concrete player object</returns>
-        public Player(string Firstname, string Lastname, bool IsCaptain, string Phone, string Email, string HasRestriction)
+        public Player(string Firstname, string Lastname, bool IsCaptain, string Phone, string Email, string HasRestriction, string MemberID)
         {
             if (String.IsNullOrWhiteSpace(Firstname) || String.IsNullOrWhiteSpace(Lastname))
                 throw new Exception("All players must have a name");
@@ -42,6 +43,7 @@ namespace LeagueCreator.Players
             this.Phone = Phone;
             this.Email = Email;
             this.HasRestriction = HasRestriction.Trim();
+            this.MemberID = MemberID;
         }
 
         /// <summary>
