@@ -19,5 +19,12 @@ namespace LeagueCreator
         /// Is this player a captain?
         /// </summary>
         bool IsCaptain { get; }
+
+        /// <summary>
+        /// Puts this player on one of the given teams.
+        /// </summary>
+        /// <param name="Teams">The available teams to choose from</param>
+        /// <param name="random">The random-number generator being used to place players on different teams</param>
+        void putMeOnTeam(IEnumerable<ITeam> Teams, Random random);
     }
 }

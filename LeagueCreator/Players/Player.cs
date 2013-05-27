@@ -40,5 +40,13 @@ namespace LeagueCreator.Players
             this.Phone = Phone;
             this.Email = Email;
         }
+
+        /// <summary>
+        /// Puts this player on one of the given teams.
+        /// </summary>
+        void putMeOnTeam(IEnumerable<ITeam> Teams, Random random)
+        {
+            Teams.Skip(random.Next(Teams.Count())).First().AddPlayer(this);
+        }
     }
 }
