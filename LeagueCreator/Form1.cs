@@ -10,6 +10,7 @@ using System.IO.Packaging;
 using System.IO;
 using System.Xml;
 
+using LeagueCreator.Factories;
 
 namespace LeagueCreator
 {
@@ -31,7 +32,7 @@ namespace LeagueCreator
             try
             {
                 //load and display the player sheet onscreen
-                PlayerSheet = PlayerSheetFactory.GetPlayerSheet("Players.xls");
+                PlayerSheet = FactoryFactory.GetPlayerSheetFactory.GetPlayerSheetFactoryGetPlayerSheet("Players.xls");
                 gridviewPlayers.DataSource = PlayerSheet.Players;
             }
             catch (Exception ex)

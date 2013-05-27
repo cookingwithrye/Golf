@@ -19,8 +19,23 @@ namespace LeagueCreator
         /// <returns>Collection of teams</returns>
         public IEnumerable<ITeam> CreateTeams(int numTeams)
         {
-            //TODO: Have the teams created
-            return Enumerable.Empty<ITeam>();
+            if (numTeams <= 0)
+                throw new Exception("There needs to be at least one team in a league");
+            
+            //verify that there are enough captains for the number of teams specified
+            var captains = this.Players.Where(c => c.IsCaptain);
+            
+            if (captains.Count() < numTeams)
+                throw new Exception("Not enough captains for the desired number of teams.");
+            
+            //create the number of empty teams needed
+            var teams = new ITeam[numTeams];
+            for (int i = 0; i < numTeams; i++)
+                teams[i] = LeagueCreator.Factories.TeamFactory.CreateTeam();
+
+            //TODO: randomly distribute the captains amongst the number of desired teams. The player receives a collection of teams that he/she could be placed on and adds himself to the list.
+            //TODO: randomly distribute the remaining players amongst the teams
+            //TODO: respect any additional association that should be maintained between the teams (ie two players that always need to be placed together)
         }
 
         /// <summary>
