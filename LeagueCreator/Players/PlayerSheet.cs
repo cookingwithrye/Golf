@@ -31,7 +31,8 @@ namespace LeagueCreator
             //create the number of empty teams needed
             var teams = Factories.TeamFactory.CreateTeams(numTeams);
 
-            //generate a random number object
+            //generate a random number object.
+            //NOTE: The player objects should respect any restrictions that are required for grouping them with other players
             Random random = new Random();
 
             //randomly distribute the captains amongst the number of desired teams. The player receives a collection of teams that he/she could be placed on and adds himself to the list.
@@ -42,9 +43,6 @@ namespace LeagueCreator
             //randomly distribute the remaining players amongst the teams
             foreach (var player in this.Players.Where(c => !c.IsCaptain))
                 player.putMeOnTeam(teams, random);
-            
-            //TODO: respect any additional association that should be maintained between the teams (ie two players that always need to be placed together). This needs to have been done before all the team placement logic that was just executed above
-            //  this can be done by restricting which teams are available for a player to be put onto to just the one it's paired with
             
             //TODO: attempt to ensure that the teams are reasonably balanced
 
