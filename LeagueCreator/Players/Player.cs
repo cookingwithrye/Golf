@@ -34,7 +34,11 @@ namespace LeagueCreator.Players
             if (String.IsNullOrWhiteSpace(Firstname) || String.IsNullOrWhiteSpace(Lastname))
                 throw new Exception("All players must have a name");
 
-
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.IsCaptain = IsCaptain;
+            this.Phone = Phone;
+            this.Email = Email;
         }
     }
 }

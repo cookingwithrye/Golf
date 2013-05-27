@@ -10,14 +10,14 @@ namespace LeagueCreator
     /// </summary>
     public interface IPlayer
     {
-        public string FirstName { get; }
-        public string LastName { get; }
-        public string Phone { get; }
-        public string Email { get; }
+        string FirstName { get; }
+        string LastName { get; }
+        string Phone { get; }
+        string Email { get; }
         
         /// <summary>
         /// Is this player a captain?
         /// </summary>
-        public bool IsCaptain { get; }
+        bool IsCaptain { get; }
     }
 }
