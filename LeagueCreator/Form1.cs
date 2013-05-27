@@ -64,5 +64,10 @@ namespace LeagueCreator
                 MessageBox.Show(String.Format("Some kind of error creating the teams. Probably an invalid number. More details '{0}'", ex.Message));
             }
         }
+
+        private void btnOpenFile_Click(object sender, EventArgs e)
+        {
+            //TODO: Use shellexec to open the xls file using Excel
+        }
     }
 }

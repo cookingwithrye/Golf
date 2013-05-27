@@ -34,6 +34,7 @@
             this.gridviewPlayers = new System.Windows.Forms.DataGridView();
             this.btnCreateTeams = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnOpenFile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridviewPlayers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,11 +95,22 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "(outputted file will be \'Teams.xls\' in the same directory as this executable)";
             // 
+            // btnOpenFile
+            // 
+            this.btnOpenFile.Location = new System.Drawing.Point(515, 46);
+            this.btnOpenFile.Name = "btnOpenFile";
+            this.btnOpenFile.Size = new System.Drawing.Size(75, 23);
+            this.btnOpenFile.TabIndex = 6;
+            this.btnOpenFile.Text = "Open File";
+            this.btnOpenFile.UseVisualStyleBackColor = true;
+            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
+            // 
             // frmLeagueGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(656, 491);
+            this.Controls.Add(this.btnOpenFile);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCreateTeams);
             this.Controls.Add(this.gridviewPlayers);
@@ -123,6 +135,7 @@
         private System.Windows.Forms.DataGridView gridviewPlayers;
         private System.Windows.Forms.Button btnCreateTeams;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnOpenFile;
     }
 }
 
