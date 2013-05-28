@@ -36,7 +36,23 @@ namespace LeagueCreator
             Random random = new Random();
 
             //randomly distribute the captains amongst the number of desired teams. The player receives a collection of teams that he/she could be placed on and adds himself to the list.
-            //FIX: this creates a bias where two captains that are sequentially next to each other will never be together even though this is supposedly random
+            var captainsMixed = new List<IPlayer>();
+            captainsMixed.AddRange(captains);
+
+            //for a random number of iterations, pick two numbers and swap them. This avoids a bias where two captains that were next to each other in the list would never end up on the same team
+            int captainCount = captains.Count();
+            int mixCount = random.Next(captainCount * 100); //TODO: theoretically we should just need to swap out each position once to guarantee randomness instead of doing it this many times
+            while (mixCount-- > 0)
+            {
+                int a = random.Next(captainCount);
+                int b = random.Next(captainCount);
+
+                IPlayer temp = captainsMixed[a];
+                captainsMixed[a] = captainsMixed[b];
+                captainsMixed[b] = temp;
+            }
+            
+            //now put the captains on the team
             foreach (var captain in captains)
                 captain.putMeOnTeam(teams, random);
 
@@ -44,7 +60,7 @@ namespace LeagueCreator
             foreach (var player in this.Players.Where(c => !c.IsCaptain))
                 player.putMeOnTeam(teams, random);
             
-            //TODO: attempt to ensure that the teams are reasonably balanced
+            //TODO: attempt to ensure that the teams are reasonably balanced numerically
 
             return teams;
         }

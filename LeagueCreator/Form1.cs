@@ -34,6 +34,8 @@ namespace LeagueCreator
                 //load and display the player sheet onscreen
                 PlayerSheet = PlayerSheetFactory.GetPlayerSheet("Players.xls");
                 gridviewPlayers.DataSource = PlayerSheet.Players;
+
+                MessageBox.Show(String.Format("{0} players loads", PlayerSheet.Players.Count()));
             }
             catch (Exception ex)
             {
@@ -61,7 +63,7 @@ namespace LeagueCreator
             }
             catch (Exception ex)
             {
-                MessageBox.Show(String.Format("Some kind of error creating the teams. Probably an invalid number. More details '{0}'", ex.Message));
+                MessageBox.Show(String.Format("Some kind of error creating the teams. Probably an invalid number of teams or not enough captains. More details '{0}'", ex.Message));
             }
         }
 

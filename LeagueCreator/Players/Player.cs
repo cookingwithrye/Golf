@@ -42,7 +42,7 @@ namespace LeagueCreator.Players
             this.IsCaptain = IsCaptain;
             this.Phone = Phone;
             this.Email = Email;
-            this.HasRestriction = HasRestriction.Trim();
+            this.HasRestriction = HasRestriction;
             this.MemberID = MemberID;
         }
 
@@ -63,6 +63,7 @@ namespace LeagueCreator.Players
             }
             
             //FIX: If too many players are grouped together then it could create weird counting for the teams. This could be corrected here by checking to see if any teams are more than two less in count than the others.
+            //  this is a variation of the knapsack problem, which in this case is pretty easy to resolve by simply placing the larger groupings first and then the smaller ones to fill in the "gaps" in numbers
             
             //otherwise just randomly add this player to any of the given teams
             Teams.Skip(random.Next(Teams.Count())).First().AddPlayer(this);
