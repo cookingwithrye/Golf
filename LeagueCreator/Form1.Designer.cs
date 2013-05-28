@@ -73,12 +73,12 @@
             this.gridviewPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridviewPlayers.Location = new System.Drawing.Point(12, 87);
             this.gridviewPlayers.Name = "gridviewPlayers";
-            this.gridviewPlayers.Size = new System.Drawing.Size(619, 299);
+            this.gridviewPlayers.Size = new System.Drawing.Size(868, 299);
             this.gridviewPlayers.TabIndex = 3;
             // 
             // btnCreateTeams
             // 
-            this.btnCreateTeams.Location = new System.Drawing.Point(556, 409);
+            this.btnCreateTeams.Location = new System.Drawing.Point(805, 406);
             this.btnCreateTeams.Name = "btnCreateTeams";
             this.btnCreateTeams.Size = new System.Drawing.Size(75, 23);
             this.btnCreateTeams.TabIndex = 4;
@@ -89,7 +89,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(283, 435);
+            this.label3.Location = new System.Drawing.Point(532, 432);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(348, 13);
             this.label3.TabIndex = 5;
@@ -109,7 +109,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(656, 491);
+            this.ClientSize = new System.Drawing.Size(913, 468);
             this.Controls.Add(this.btnOpenFile);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCreateTeams);
