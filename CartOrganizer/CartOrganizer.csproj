@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{DE1557AA-D9BB-4A67-AF80-564D27A61CF0}</ProjectGuid>
+    <ProjectGuid>{C8AD133D-9DA1-49D8-8EB0-21411F24478B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LeagueCreator</RootNamespace>
-    <AssemblyName>LeagueCreator</AssemblyName>
+    <RootNamespace>CartOrganizer</RootNamespace>
+    <AssemblyName>CartOrganizer</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -34,7 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,24 +44,14 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factories\PlayerFactory.cs" />
-    <Compile Include="Factories\TeamFactory.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Players\IPlayer.cs" />
-    <Compile Include="Players\IPlayerSheet.cs" />
-    <Compile Include="Players\ITeam.cs" />
-    <Compile Include="Players\Player.cs" />
-    <Compile Include="Players\PlayerSheet.cs" />
-    <Compile Include="Factories\PlayerSheetFactory.cs" />
-    <Compile Include="Players\Team.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -86,12 +75,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Utilities\Office\OfficeHelpers.csproj">
-      <Project>{D18460BA-A202-48AE-837F-5C21746AE8C4}</Project>
-      <Name>OfficeHelpers</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
