@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
+
+using OfficeHelpers;
 
 namespace LeagueCreator
 {
@@ -10,7 +13,8 @@ namespace LeagueCreator
         /// <summary>
         /// Exposes the collection of players in this player sheet
         /// </summary>
-        public IEnumerable<IPlayer> Players { get; private set; }
+        public IEnumerable<IPlayer> Players { get { return _players.AsEnumerable(); } }
+        private IList<IPlayer> _players;
 
         /// <summary>
         /// Splits the loaded players into the specified number of teams, ensuring that each team has at least one captain
@@ -41,26 +45,26 @@ namespace LeagueCreator
 
             //for a random number of iterations, pick two numbers and swap them. This avoids a bias where two captains that were next to each other in the list would never end up on the same team
             int captainCount = captains.Count();
-            int mixCount = random.Next(captainCount * 100); //TODO: theoretically we should just need to swap out each position once to guarantee randomness instead of doing it this many times
-            while (mixCount-- > 0)
-            {
-                int a = random.Next(captainCount);
-                int b = random.Next(captainCount);
 
+            for (int i = 0; i < captainCount; i++)
+            {
+                //pick a new random position for this captain in the sequence of captains
+                int a = random.Next(captainCount);
                 IPlayer temp = captainsMixed[a];
-                captainsMixed[a] = captainsMixed[b];
-                captainsMixed[b] = temp;
+
+                captainsMixed[a] = captainsMixed[i];
+                captainsMixed[i] = temp;
             }
             
             //now put the captains on the team
-            foreach (var captain in captains)
+            foreach (var captain in captainsMixed)
                 captain.putMeOnTeam(teams, random);
 
             //randomly distribute the remaining players amongst the teams
             foreach (var player in this.Players.Where(c => !c.IsCaptain))
                 player.putMeOnTeam(teams, random);
             
-            //TODO: attempt to ensure that the teams are reasonably balanced numerically
+            //UPGRADE: attempt to ensure that the teams are reasonably balanced numerically by placing the grouped players onto teams first
 
             return teams;
         }
@@ -71,12 +75,39 @@ namespace LeagueCreator
         /// <param name="filename">The XLS file to load the player information from</param>
         public PlayerSheet(string filename)
         {
+            //initialize the players on this sheet
+            _players = new List<IPlayer>();
+            
             //verify that the file exists
             if (!System.IO.File.Exists(filename))
                 throw new Exception(String.Format("No file '{0}' found.", filename));
 
-            //TODO: verify the file format and load the data row-by-row. Based on code from here: http://msdn.microsoft.com/library/bb332058.aspx
-            //ignore the first two rows as per the sample specification
+            //load the xls file into a dataset, assuming that headers are present
+            DataSet unstructuredData = OfficeHelpers.Excel.ImportExcelXLS(filename, hasHeaders:true);
+
+            //TODO: verify that the file format matches the expected file input format. Could be specified more formally later.
+
+            //read in players until we encounter one without both a first and last name
+            bool done = false;
+            while (!done)
+            {
+                //generate the player object
+                IPlayer newPlayer = 
+                    Factories.PlayerFactory.CreatePlayer(
+                        Firstname: Excel.GiveMeCellValue(unstructuredData, 0, 0),
+                        Lastname: Excel.GiveMeCellValue(unstructuredData, 0, 0),
+                        IsCaptain: Excel.GiveMeCellValue(unstructuredData, 0, 0),
+                        Phone: Excel.GiveMeCellValue(unstructuredData, 0, 0),
+                        Email: Excel.GiveMeCellValue(unstructuredData, 0, 0),
+                        HasRestriction: Excel.GiveMeCellValue(unstructuredData, 0, 0),
+                        MemberID: Excel.GiveMeCellValue(unstructuredData, 0, 0)
+                    );
+
+                if (String.IsNullOrWhiteSpace(newPlayer.FirstName) && String.IsNullOrWhiteSpace(newPlayer.LastName))
+                    done = true;
+                else
+                    _players.Add(newPlayer);
+            }
         }
     }
 }
